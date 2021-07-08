@@ -1,24 +1,19 @@
-# README
+# MeshiQu!!
+アフターコロナの飲食業界を盛り上げるマッチングアプリ
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 実行手順
 
-Things you may want to cover:
+### コンテナをビルド
+`docker-compose build`
 
-* Ruby version
+### コンテナの起動
+`docker-compose up`
 
-* System dependencies
+### DB作成
+`docker-compose run web rails db:create`
 
-* Configuration
+### マイグレーションファイルを反映
+`docker-compose run web rails db:migrate`
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### サーバの停止
+`docker-compose down`
