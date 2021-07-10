@@ -23,6 +23,20 @@
 
     <% end %>
 
+
+    <% if restaurant_signed_in? %>
+
+      <h3><%= link_to '店マイページ', restaurant_path(current_restaurant) %><h3>
+      <h3><%= link_to "店ログアウト", destroy_restaurant_session_path, method: :delete %><h3>
+
+    <% else %>
+
+      <h3><%= link_to "店ログイン", new_restaurant_session_path %></h3>
+      <h3><%= link_to "店新規登録", new_restaurant_registration_path %></h3>
+
+    <% end %>
+
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
