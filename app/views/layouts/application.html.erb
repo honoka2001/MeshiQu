@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>App</title>
+    <title>MeshiQu!!</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,19 @@
   </head>
 
   <body>
+
+    <% if user_signed_in? %>
+  
+      <h3><%= link_to 'ユーザーマイページ', user_path(current_user) %><h3>
+      <h3><%= link_to "ユーザーログアウト", destroy_user_session_path, method: :delete %><h3>
+
+    <% else %>
+
+      <h3><%= link_to "ユーザーログイン", new_user_session_path %></h3>
+      <h3><%= link_to "ユーザー新規登録", new_user_registration_path %></h3>
+
+    <% end %>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
