@@ -1,0 +1,12 @@
+<h1>Users#index</h1>
+<p>Find me in app/views/users/index.html.erb</p>
+
+<% @users.each do |user| %>
+    <hr>
+    <p>ユーザー名: <%=link_to user.name, user_path(user.id) %></p>
+    <p>メールアドレス: <%=link_to user.email, user_path(user.id) %></p>
+    <p>学校名: <%=link_to user.school, user_path(user.id) %></p>
+    <p>学年: <%=link_to user.grade, user_path(user.id) %></p>
+    <p>学部: <%=link_to user.department, user_path(user.id) %></p>
+    <p>性別: <%=link_to user.gender, user_path(user.id) %></p>
+<% end %>
