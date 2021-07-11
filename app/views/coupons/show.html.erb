@@ -1,0 +1,30 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-4 mx-auto">
+      <div class="card">
+        <div class="card-body">
+
+            <% if @coupon.exp_date %>
+             <small>有効期限 : <%= @coupon.exp_date %></small>
+            <% else %>
+             <small>有効期限 : 無期限<%= @coupon.exp_date %></small>
+            <% end %>
+
+            <h3 class="card-title"><%=@coupon.restaurant.name %></h3>
+
+            <p class="card-text">
+              <span class="h4"><%= @coupon.min_setting_count %></span> 
+               <small>人以上の来店で利用可能</small>
+            </p>
+
+            <p class="card-text"><%= simple_format @coupon.content %></p>
+
+            <p class="card-text">
+             <small class="text-muted">更新日：<%= @coupon.updated_at.strftime("%Y-%m-%d") %></small>
+            </p>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

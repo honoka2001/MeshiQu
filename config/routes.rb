@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :restaurants
+  resources :coupons
   root to: "homes#index"
   
 end

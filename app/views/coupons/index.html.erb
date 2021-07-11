@@ -1,0 +1,15 @@
+<h2>クーポン一覧</h2>
+<% @coupons.each do |coupon| %>
+    <hr>
+
+    <p>店舗名: <%=coupon.restaurant.name %></p>
+    <p>人数: <%=coupon.min_setting_count %></p>
+    <p>クーポン内容: <%=coupon.content %></p>
+    <% if  coupon.exp_date %>
+        <p>有効期限: <%=coupon.exp_date %></p>
+    <% else %>
+        <p>有効期限: 無期限 </p>
+    <% end %>
+    <%=link_to 'クーポン詳細', coupon_path(coupon.id) %>
+    
+<% end %>
