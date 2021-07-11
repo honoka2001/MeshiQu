@@ -11,34 +11,35 @@
 
   <body>
 
-    <% if user_signed_in? %>
-  
-      <h3><%= link_to 'ユーザーマイページ', user_path(current_user) %><h3>
-      <h3><%= link_to "ユーザーログアウト", destroy_user_session_path, method: :delete %><h3>
+    <nav class="navbar navbar-light bg-light">
+      <%= link_to 'MeshiQu', root_path, class: "navbar-brand font-weight-bold" %>
+      <div class = "d-flex flex-row-reverse bd-highlight">
 
-    <% else %>
+  　    <% if restaurant_signed_in? %>
+          <h3><%= link_to 'マイページ', restaurant_path(current_restaurant), class: "btn btn-success mx-1" %><h3>
+          <h3><%= link_to "ログアウト", destroy_restaurant_session_path, method: :delete, class: "btn btn-danger mx-1" %><h3>
+        <% else %>
+          <h3><%= link_to "ログイン[店]", new_restaurant_session_path, class: "btn btn-primary mx-1" %></h3>
+          <h3><%= link_to "新規登録[店]", new_restaurant_registration_path, class: "btn btn-primary mx-1" %></h3>
+        <% end %>
 
-      <h3><%= link_to "ユーザーログイン", new_user_session_path %></h3>
-      <h3><%= link_to "ユーザー新規登録", new_user_registration_path %></h3>
+        <% if user_signed_in? %>
+          <h3><%= link_to 'マイページ', user_path(current_user), class: "btn btn-success mx-1" %><h3>
+          <h3><%= link_to "ログアウト", destroy_user_session_path, method: :delete , class: "btn btn-danger mx-1"%><h3>
+        <% else %>
+          <h3><%= link_to "ログイン[ユーザー]", new_user_session_path, class: "btn btn-primary mx-1" %></h3>
+          <h3><%= link_to "新規登録[ユーザー]", new_user_registration_path, class: "btn btn-primary mx-1" %></h3>
+        <% end %>
+        
+       </div>
+    </nav>
 
+    <% if flash[:notice] %>
+      <div class="alert alert-primary" role="alert"><strong><%= notice %></strong></div>
     <% end %>
-
-
-    <% if restaurant_signed_in? %>
-
-      <h3><%= link_to '店マイページ', restaurant_path(current_restaurant) %><h3>
-      <h3><%= link_to "店ログアウト", destroy_restaurant_session_path, method: :delete %><h3>
-
-    <% else %>
-
-      <h3><%= link_to "店ログイン", new_restaurant_session_path %></h3>
-      <h3><%= link_to "店新規登録", new_restaurant_registration_path %></h3>
-
+    <% if flash[:alert] %>
+      <div class="alert alert-danger" role="alert"><strong><%= alert %></strong></div>
     <% end %>
-
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>
