@@ -1,0 +1,17 @@
+<h2>イベント</h2>
+<% @events.each do |event| %>
+    <hr>
+    <p>主催者: <%=event.host_id %></p>
+    <p>募集人数: <%=event.setting_count %></p>
+    <p>集合場所: <%=event.prace %></p>
+    <p>募集内容: <%=event.content %></p>
+    <p>イベント日: <%=event.event_date %></p>
+
+    <% if  event.deadline_date %>
+        <p>募集締め切り日: <%=event.deadline_date %></p>
+    <% else %>
+        <p>募集締め切り日: 無期限 </p>
+    <% end %>
+    <%=link_to 'イベント詳細', event_path(event.id) %>
+    
+<% end %>

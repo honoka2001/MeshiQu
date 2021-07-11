@@ -16,16 +16,16 @@
       <div class = "d-flex flex-row-reverse bd-highlight">
 
   　    <% if restaurant_signed_in? %>
-          <h3><%= link_to 'マイページ', restaurant_path(current_restaurant), class: "btn btn-success mx-1" %><h3>
-          <h3><%= link_to "ログアウト", destroy_restaurant_session_path, method: :delete, class: "btn btn-danger mx-1" %><h3>
+          <h3><%= link_to 'マイページ[店]', restaurant_path(current_restaurant), class: "btn btn-success mx-1" %><h3>
+          <h3><%= link_to "ログアウト[店]", destroy_restaurant_session_path, method: :delete, class: "btn btn-danger mx-1" %><h3>
         <% else %>
           <h3><%= link_to "ログイン[店]", new_restaurant_session_path, class: "btn btn-primary mx-1" %></h3>
           <h3><%= link_to "新規登録[店]", new_restaurant_registration_path, class: "btn btn-primary mx-1" %></h3>
         <% end %>
 
         <% if user_signed_in? %>
-          <h3><%= link_to 'マイページ', user_path(current_user), class: "btn btn-success mx-1" %><h3>
-          <h3><%= link_to "ログアウト", destroy_user_session_path, method: :delete , class: "btn btn-danger mx-1"%><h3>
+          <h3><%= link_to 'マイページ[ユーザー]', user_path(current_user), class: "btn btn-success mx-1" %><h3>
+          <h3><%= link_to "ログアウト[ユーザー]", destroy_user_session_path, method: :delete , class: "btn btn-danger mx-1"%><h3>
         <% else %>
           <h3><%= link_to "ログイン[ユーザー]", new_user_session_path, class: "btn btn-primary mx-1" %></h3>
           <h3><%= link_to "新規登録[ユーザー]", new_user_registration_path, class: "btn btn-primary mx-1" %></h3>
