@@ -1,0 +1,32 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-4 mx-auto">
+      <div class="card">
+        <div class="card-body">
+
+            <% if @event.deadline_date %>
+             <small>募集締め切り日 : <%= @event.deadline_date %></small>
+            <% else %>
+             <small>募集締め切り日 : 無期限<%= @event.deadline_date %></small>
+            <% end %>
+
+            <h3 class="card-title">主催者 : <%=@event.host_id %></h3>
+
+            <p class="card-text">
+              <span class="h4"><%= @event.setting_count %></span> 
+               <small>人募集</small>
+            </p>
+
+            <p class="card-text"><%= @event.prace %></p>
+            <p class="card-text"><%= simple_format @event.content %></p>
+            <p class="card-text">イベント日 : <%= @event.event_date %></p>
+
+            <p class="card-text">
+             <small class="text-muted">更新日：<%= @event.updated_at.strftime("%Y-%m-%d") %></small>
+            </p>
+ 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
