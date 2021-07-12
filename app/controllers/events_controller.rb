@@ -9,6 +9,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @event.coupon_id = params[:coupon_id]
   end
 
   def create
