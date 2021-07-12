@@ -9,6 +9,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @event.coupon_id = params[:coupon_id]
   end
 
   def create
@@ -23,7 +24,7 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:setting_count, :prace, :content, :event_date, :deadline_date)
+    params.require(:event).permit(:setting_count, :prace, :content, :event_date, :deadline_date, :coupon_id)
   end
 
 end

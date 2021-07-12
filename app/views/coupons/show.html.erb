@@ -23,8 +23,7 @@
              <small class="text-muted">更新日：<%= @coupon.updated_at.strftime("%Y-%m-%d") %></small>
             </p>
 
-            <%=link_to 'このクーポンでメンバーを募集する', new_event_path %>
- 
+            <%= button_to "このクーポンでイベントを投稿する", new_event_path, { method: :get, params: {coupon_id: @coupon.id} } %>
         </div>
       </div>
     </div>

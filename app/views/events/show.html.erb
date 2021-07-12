@@ -21,6 +21,8 @@
             <p class="card-text"><%= simple_format @event.content %></p>
             <p class="card-text">イベント日 : <%= @event.event_date %></p>
 
+            <p class="card-title">クーポンid : <%=@event.coupon_id %></p>
+
             <p class="card-text">
              <small class="text-muted">更新日：<%= @event.updated_at.strftime("%Y-%m-%d") %></small>
             </p>
