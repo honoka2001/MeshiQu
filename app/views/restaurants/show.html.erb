@@ -8,9 +8,9 @@
     <p>住所: <%= @restaurant.address %></p>
     <%= link_to '編集する' %>
     <%= link_to '削除する' %>
+    <h3><%= link_to 'クーポンの投稿', new_coupon_path %><h3>
 <% end %>
 
-<h3><%= link_to 'クーポンの投稿', new_coupon_path %><h3>
 
 <h3>投稿したクーポン</h3>
 <% @restaurant.coupons.each do |coupon| %>
