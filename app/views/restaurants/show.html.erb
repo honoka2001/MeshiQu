@@ -6,4 +6,8 @@
 <% if @restaurant.id == current_restaurant.id %>
     <p>メールアドレス: <%= @restaurant.email %></p>
     <p>住所: <%= @restaurant.address %></p>
+    <%= link_to '編集する' %>
+    <%= link_to '削除する' %>
+<% end %>
+
 <% end %>
