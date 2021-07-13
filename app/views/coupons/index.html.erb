@@ -18,6 +18,9 @@
                         無期限 
                     <% end %>
                 </div>
+                <div class="mx-auto mb-3">
+                    <%= button_to "イベントを投稿する", new_event_path, { method: :get, params: {coupon_id: coupon.id} } %>
+                </div>
             </div>
 
         <% end %>
