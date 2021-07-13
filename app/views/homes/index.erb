@@ -1,14 +1,25 @@
-<h1>MeshiQu!!</h1>
-<h2>新規登録・ログイン・ログアウト</h2>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <div class="text-center">
+        <h1 class="display-4 mt-5">MeshiQu!!</h1>
+      </div>
 
-<h2>ユーザー</h2>
-<h3><%= link_to "ログイン", new_user_session_path %></h3>
-<h3><%= link_to "新規登録", new_user_registration_path %></h3>
-<h3><%= link_to "ログアウト", destroy_user_session_path, method: :delete %><h3>
+      <div class="container mt-4">
+        <div class="text-center">
+          <h2>ユーザー</h2>
+          <h3><%= link_to "ログイン", new_user_session_path, class: "d-block btn btn-primary w-auto" %></h3>
+          <h3><%= link_to "新規登録", new_user_registration_path, class: "d-block btn btn-outline-primary w-auto" %></h3>
+        </div>
+      </div>
 
-
-<h2>店舗</h2>
-<h3><%= link_to "ログイン", new_restaurant_session_path %></h3>
-<h3><%= link_to "新規登録", new_restaurant_registration_path %></h3>
-<h3><%= link_to "ログアウト", destroy_restaurant_session_path, method: :delete %><h3>
-
+      <div class="container mt-5">
+        <div class="text-center">
+          <h2>店舗</h2>
+          <h3><%= link_to "ログイン", new_restaurant_session_path, class: "d-block btn btn-primary w-auto" %></h3>
+          <h3><%= link_to "新規登録", new_restaurant_registration_path, class: "d-block btn btn-outline-primary w-auto" %></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
