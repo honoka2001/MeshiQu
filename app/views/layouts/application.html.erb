@@ -24,7 +24,6 @@
           <h3><%= link_to 'マイページ[ユーザー]', user_path(current_user), class: "btn btn-primary mx-1" %><h3>
           <h3><%= link_to 'クーポン一覧', coupons_path, class: "btn btn-info mx-1" %><h3>
           <h3><%= link_to 'イベント一覧', events_path, class: "btn btn-success mx-1" %><h3>
-          <h3><%= link_to 'イベント作成', new_event_path, class: "btn btn-success mx-1" %><h3>
         <% else %>
           <h3><%= link_to "新規登録[店]", new_restaurant_registration_path, class: "btn btn-primary mx-1" %></h3>
           <h3><%= link_to "ログイン[店]", new_restaurant_session_path, class: "btn btn-primary mx-1" %></h3>
