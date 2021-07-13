@@ -5,6 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :event_users
-  has_many :participation_events, through: :event_users, source: :event
   has_many :events, dependent: :destroy, foreign_key: :host_id
+  has_many :participate_events, through: :event_users, source: :event
 end
