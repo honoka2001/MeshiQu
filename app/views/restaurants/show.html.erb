@@ -1,6 +1,29 @@
-<h1>Restaurants#show</h1>
-<p>Find me in app/views/restaurants/show.html.erb</p>
-<hr>
-<p>ユーザー名: <%= @restaurant.name %></p>
-<p>メールアドレス: <%= @restaurant.email %></p>
-<p>住所: <%= @restaurant.address %></p>
+
+<h2>店舗個別ページ</h2>
+
+<p>店舗名: <%= @restaurant.name %></p>
+
+<% if @restaurant.id == current_restaurant.id %>
+    <p>メールアドレス: <%= @restaurant.email %></p>
+    <p>住所: <%= @restaurant.address %></p>
+    <%= link_to '編集する' %>
+    <%= link_to '削除する' %>
+    <h3><%= link_to 'クーポンの投稿', new_coupon_path %><h3>
+<% end %>
+
+
+<h3>投稿したクーポン</h3>
+<% @restaurant.coupons.each do |coupon| %>
+    <hr>
+
+    <p>店舗名: <%=coupon.restaurant.name %></p>
+    <p>人数: <%=coupon.min_setting_count %></p>
+    <p>クーポン内容: <%=coupon.content %></p>
+    <% if  coupon.exp_date %>
+        <p>有効期限: <%=coupon.exp_date %></p>
+    <% else %>
+        <p>有効期限: 無期限 </p>
+    <% end %>
+    <%=link_to 'クーポン詳細', coupon_path(coupon.id) %>
+    
+<% end %>

@@ -16,7 +16,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.host_id = current_user.id
     if @event.save!
-        redirect_to event_path(@event), notice: '投稿に成功しました。'
+        redirect_to events_path, notice: '投稿に成功しました。'
       else
         render :new
     end

@@ -15,7 +15,7 @@ class CouponsController < ApplicationController
     @coupon = Coupon.new(coupon_params)
     @coupon.restaurant_id = current_restaurant.id
     if @coupon.save
-      redirect_to coupon_path(@coupon), notice: '投稿に成功しました。'
+      redirect_to restaurant_path(current_restaurant), notice: '投稿に成功しました。'
     else
       render :new
     end
