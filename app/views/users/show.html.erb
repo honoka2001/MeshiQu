@@ -1,15 +1,38 @@
-<h2>ユーザー個別ページ</h2>
+<div class="container mt-5">
+    <div class="row">
+　      <div class="col-6 mx-auto">
+            <% if @user.id == current_user.id %>
+                <h2 class="text-center m-5 text-primary">マイページ</h2>
+                <div class="text-center mb-5" >
+                     <button type="button" class="btn btn-outline-primary btn-lg">編集する</button> 
+               </div>      
+            <% else %>
+                <h2 class="text-center m-5 text-primary">@user.name ページ</h2>
+            <% end %>
 
-<p>ユーザー名: <%= @user.name %></p>
+            <div>
+                <h4 class="card-text">
+                    <small>ユーザー名</small> : <%= @user.name %>
+                </h4>
+                <h4 class="card-text">
+                    <small>学校</small> : <%= @user.school %>
+                </h4>
+                <h4 class="card-text">
+                    <small>学年</small> : <%= @user.grade %>
+                </h4>          
+                <h4 class="card-text">
+                    <small>学科</small> : <%= @user.department %>
+                </h4>
+                <h4 class="card-text">
+                    <small>性別</small> : <%= @user.gender %>
+                </h4>
+                <% if @user.id == current_user.id %>
+                    <h4 class="card-text">
+                        <small>メールアドレス</small> : <%= @user.email %>
+                    </h4>
+                <% end %>
+            </div>
 
-<p>学校: <%= @user.school %></p>
-<p>学年: <%= @user.grade %></p>
-<p>学科: <%= @user.department %></p>
-<p>性別: <%= @user.gender %></p>
-
-<% if @user.id == current_user.id %>
-    <p>メールアドレス: <%= @user.email %></p>
-    <%= link_to '編集する' %>
-    <%= link_to '削除する' %>
-<% end %>
-
+        </div>
+    </div>
+</div>
