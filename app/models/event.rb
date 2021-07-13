@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
     belongs_to :user, optional: true
+    belongs_to :coupon
     has_many :event_users
     has_many :users, through: :event_users
 end
