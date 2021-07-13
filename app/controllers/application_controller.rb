@@ -16,12 +16,13 @@ end
 class ApplicationController < ActionController::Base
 
   # ログイン後の遷移
-  def after_sign_in_path_for(users)
-    events_path
-  end
-
-  def after_sign_in_path_for(restaurant)
-    restaurant_path(current_restaurant)
+  def after_sign_in_path_for(resource)
+    case resource
+    when Restaurant
+      restaurant_path(current_restaurant)
+    when User
+      user_path(current_user)
+    end
   end
 
     protected
