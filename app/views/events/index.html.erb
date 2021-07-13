@@ -1,18 +1,23 @@
-<h2>イベント</h2>
-<% @events.each do |event| %>
-    <hr>
-    <p>主催者: <%=event.host_id %></p>
-    <p>募集人数: <%=event.setting_count %></p>
-    <p>集合場所: <%=event.prace %></p>
-    <p>募集内容: <%=event.content %></p>
-    <p>イベント日: <%=event.event_date %></p>
-    <p>クーポンid: <%=event.coupon_id %></p>
+<div class="container mt-5">
+    <h2 class="text-center m-5 text-success">イベント一覧</h2>
+    <div class="card-deck m-0">
+        <% @events.each do |event| %>
 
-    <% if  event.deadline_date %>
-        <p>募集締め切り日: <%=event.deadline_date %></p>
-    <% else %>
-        <p>募集締め切り日: 無期限 </p>
-    <% end %>
-    <%=link_to 'イベント詳細', event_path(event.id) %>
-    
-<% end %>
+            <div class="card mb-4" style="min-width: 200px;">
+                <div class="card-body">
+                    <h5 class="card-title"><small class="text-muted">ホスト</small><%=event.host.name %></h5>
+                    <p><%=event.setting_count %><small class="text-muted">人募集</small></p>
+                    <p class="card-text"><%=event.content %></p>
+                    <p class="card-title"><small class="text-muted">開催日</small> <%=event.event_date %></p>
+                    <%=link_to 'イベント詳細', event_path(event.id)%>
+                </div>
+                <div class="card-footer pt-0">
+                　  <p><%=event.coupon.restaurant.name %></p>
+                    <p><%=event.coupon.min_setting_count %><small class="text-muted">人以上の来店で</small></p>
+                    <p><%=event.coupon.content %></p>
+                </div>
+            </div>
+
+        <% end %>
+    </div>
+</div>
