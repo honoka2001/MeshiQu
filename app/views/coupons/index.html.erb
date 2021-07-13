@@ -1,15 +1,25 @@
-<h2>クーポン一覧</h2>
-<% @coupons.each do |coupon| %>
-    <hr>
+<div class="container mt-5">
+    <h2 class="text-center m-5 text-info">クーポン一覧</h2>
+    <div class="card-deck m-0">
+        <% @coupons.each do |coupon| %>
 
-    <p>店舗名: <%=coupon.restaurant.name %></p>
-    <p>人数: <%=coupon.min_setting_count %></p>
-    <p>クーポン内容: <%=coupon.content %></p>
-    <% if  coupon.exp_date %>
-        <p>有効期限: <%=coupon.exp_date %></p>
-    <% else %>
-        <p>有効期限: 無期限 </p>
-    <% end %>
-    <%=link_to 'クーポン詳細', coupon_path(coupon.id) %>
-    
-<% end %>
+            <div class="card mb-4" style="min-width: 200px;">
+                <div class="card-body">
+                    <h5 class="card-title"><small class="text-muted">店舗名</small><br><%=coupon.restaurant.name %></h5>
+                    <p><%=coupon.min_setting_count %><small class="text-muted">人以上で</small></p>
+                    <p class="card-text"><%=coupon.content %></p>
+                    <%=link_to 'クーポン詳細', coupon_path(coupon.id) %>
+                </div>
+                <div class="card px-3 py-2 mb-3">
+                    <small class="text-muted">有効期限</small>
+                    <% if coupon.exp_date %>
+                        <%=coupon.exp_date %>
+                    <% else %>
+                        無期限 
+                    <% end %>
+                </div>
+            </div>
+
+        <% end %>
+    </div>
+</div>
