@@ -19,6 +19,11 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(users)
     events_path
   end
+
+  def after_sign_in_path_for(restaurant)
+    restaurant_path(current_restaurant)
+  end
+
     protected
      
     def devise_parameter_sanitizer
