@@ -213,7 +213,7 @@ Devise.setup do |config|
   # Time interval to unlock the account if :time is enabled as unlock_strategy.
   # config.unlock_in = 1.hour
 
-  #  on the last attempt before the account is locked.
+  # Warn on the last attempt before the account is locked.
   # config.last_attempt_warning = true
 
   # ==> Configuration for :recoverable
