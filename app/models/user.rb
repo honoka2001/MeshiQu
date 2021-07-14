@@ -8,5 +8,8 @@ class User < ApplicationRecord
   has_many :event_users, foreign_key: :member_id
   has_many :participates, through: :event_users, source: :event
 
+  def participate?(event)
+    participates.include?(event)
+  end
 
 end
