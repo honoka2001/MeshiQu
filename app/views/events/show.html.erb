@@ -1,14 +1,23 @@
 <div class="container my-5">
   <div class="row">
   <div class="col-6 mx-auto">
+
     <div class="text-center mb-5">
       <% if @event.host_id == current_user.id %>
         <%= link_to "編集画面へ", edit_event_path(@event), class: "btn btn-success btn-lg" %>
       <% else %>
-        <button type="button" class="btn btn-outline-success btn-lg">イベントに参加する</button> 
+        <% if current_user.participate?(@event) %>
+            <%= link_to event_participates_path(@event), method: :delete do %>
+                参加を取り消す
+            <% end %>
+        <% else %>
+            <%= link_to event_participates_path(@event), method: :post do %>
+                参加する
+            <% end %>
+        <% end %>
       <% end %>
-    </div>      
-
+    </div>
+    
         <div class="card text-center">
             <div class="card-header pt-1 bg-success text-white">
             <p class="card-text">
