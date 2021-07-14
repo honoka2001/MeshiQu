@@ -7,10 +7,6 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
-  def edit
-    @event = Event.find(params[:id])
-  end
-
   def new
     @event = Event.new
     @event.coupon_id = params[:coupon_id]
@@ -23,6 +19,19 @@ class EventsController < ApplicationController
         redirect_to events_path, notice: '投稿に成功しました。'
       else
         render :new
+    end
+  end
+
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    if @event.update(event_params)
+      redirect_to event_path(@event), notice: '更新に成功しました。'
+    else
+      render :edit
     end
   end
 
