@@ -22,6 +22,19 @@ class EventsController < ApplicationController
     end
   end
 
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    if @event.update(event_params)
+      redirect_to event_path(@event), notice: '更新に成功しました。'
+    else
+      render :edit
+    end
+  end
+
   private
   def event_params
     params.require(:event).permit(:setting_count, :prace, :content, :event_date, :deadline_date, :coupon_id)
