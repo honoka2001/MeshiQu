@@ -7,6 +7,10 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
   def new
     @event = Event.new
     @event.coupon_id = params[:coupon_id]
