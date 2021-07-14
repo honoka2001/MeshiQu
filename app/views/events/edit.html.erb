@@ -1,1 +1,20 @@
-イベント編集
+<h1>イベント編集</h1>
+
+<%= form_for @event do |f| %>
+  <%= f.label :setting_count, "募集人数" %>
+  <%= f.number_field :setting_count %>
+
+  <%= f.label :prace, "集合場所" %>
+  <%= f.text_field :prace %>
+
+  <%= f.label :content, "募集内容" %>
+  <%= f.text_field :content %>
+
+  <%= f.label :event_date, "イベント日時" %>
+  <%= f.date_field :event_date %>
+
+  <%= f.label :deadline_date, "募集締め切り" %>
+  <%= f.date_field :deadline_date %>
+
+  <%= f.submit "更新" %>
+<% end %>
