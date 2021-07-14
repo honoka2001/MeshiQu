@@ -6,5 +6,10 @@ class User < ApplicationRecord
 
   has_many :events, dependent: :destroy, foreign_key: :host_id
   has_many :event_users, foreign_key: :member_id
-  has_many :participate_events, through: :event_users, source: :event
+  has_many :participates, through: :event_users, source: :event
+
+  def participate?(event)
+    participates.include?(event)
+  end
+
 end

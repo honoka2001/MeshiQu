@@ -15,7 +15,11 @@ Rails.application.routes.draw do
   resources :users
   resources :restaurants
   resources :coupons
-  resources :events
+
+  resources :events do
+    resource :participates, only: [:create, :destroy]
+  end
+
   root to: "homes#index"
   
 end
