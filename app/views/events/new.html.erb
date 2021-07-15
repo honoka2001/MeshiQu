@@ -2,41 +2,48 @@
   <div class="row">
     <div class="col-6 mx-auto">
 
-        <h2 class="text-primary">イベント新規投稿</h2>
-        <%= form_for @event do |f| %>
+      <h2 class="text-primary">イベント新規投稿</h2>
+      <%= form_for @event do |f| %>
 
-            <%=　= f.hidden_field :coupon_id, :value => @event.coupon_id %>
-         
-            <div class="form-group">
-                <%= f.label :setting_count, "募集人数" %><br />
-                <%= f.number_field :setting_count, class: "form-control" %>
-            </div>
+        <%= f.hidden_field :coupon_id, :value => @event.coupon_id %>
 
-            <div class="form-group">
-                <%= f.label :prace, "集合場所" %><br />
-                <%= f.text_field :prace, class: "form-control" %>
-            </div>
+        <div class="form-group">
+          <h4>店舗名:<%= @coupon.restaurant.name %></h4>
+          <h4><%= @coupon.min_setting_count %>人以上で</h4>
+          <h4><%= @coupon.content %></h4>
+          <h4>有効期限:<%= @coupon.exp_date %></h4>
+        </div>
 
-            <div class="form-group">
-                <%= f.label :content, "募集内容" %><br />
-                <%= f.text_field :content, class: "form-control" %>
-            </div>
+        <div class="form-group">
+          <%= f.label :setting_count, "募集人数" %><br />
+          <%= f.number_field :setting_count, class: "form-control" %>
+        </div>
 
-            <div class="form-group">
-                <%= f.label :event_date, "イベント日時" %><br />
-                <%= f.date_field :event_date, class: "form-control" %>
-            </div>
+        <div class="form-group">
+          <%= f.label :prace, "集合場所" %><br />
+          <%= f.text_field :prace, class: "form-control" %>
+        </div>
 
-            <div class="form-group">
-                <%= f.label :deadline_date, "募集締め切り" %><br />
-                <%= f.date_field :deadline_date, class: "form-control" %>
-            </div>
+        <div class="form-group">
+          <%= f.label :content, "募集内容" %><br />
+          <%= f.text_field :content, class: "form-control" %>
+        </div>
 
-            <div class="actions">
-                <%= f.submit "投稿", class: "btn btn-primary mb-1" %>
-            </div>
+        <div class="form-group">
+          <%= f.label :event_date, "イベント日時" %><br />
+          <%= f.date_field :event_date, class: "form-control" %>
+        </div>
 
-        <% end %>
+        <div class="form-group">
+          <%= f.label :deadline_date, "募集締め切り" %><br />
+          <%= f.date_field :deadline_date, class: "form-control" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "投稿", class: "btn btn-primary mb-1" %>
+        </div>
+
+      <% end %>
 
     </div>
   </div>
