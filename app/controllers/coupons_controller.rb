@@ -21,6 +21,19 @@ class CouponsController < ApplicationController
     end
   end
 
+  def edit
+    @coupon = Coupon.find(params[:id])
+  end
+
+  def update
+    @coupon = Coupon.find(params[:id])
+    if @coupon.update(coupon_params)
+      redirect_to coupon_path(@coupon), notice: '更新に成功しました。'
+    else
+      render :edit
+    end
+  end
+
   private
   def coupon_params
     params.require(:coupon).permit(:min_setting_count, :content, :exp_date)
