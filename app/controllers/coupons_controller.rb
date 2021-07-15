@@ -21,6 +21,10 @@ class CouponsController < ApplicationController
     end
   end
 
+  def edit
+    @coupon = Coupon.find(params[:id])
+  end
+
   private
   def coupon_params
     params.require(:coupon).permit(:min_setting_count, :content, :exp_date)
