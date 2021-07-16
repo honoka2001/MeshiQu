@@ -15,7 +15,7 @@
                     <small>人以上の来店で利用可能</small>
                 </h5>
                 <h3 class="card-text"><%= simple_format @coupon.content %></h3>
-                <%= button_to "このクーポンでイベントを投稿する", new_event_path, { method: :get, params: {coupon_id: @coupon.id} } %>            
+                <%= button_to "このクーポンでイベントを投稿する", new_event_path, { method: :get, params: {coupon_id: @coupon.id} } %>
             </div>
             <div class="card-footer bg-info text-white">
                 <% if @coupon.exp_date %>
@@ -24,8 +24,18 @@
                     有効期限 : 無期限<%= @coupon.exp_date %>
                 <% end %>
             </div>
+            <h3>チェック件数: <%= @coupon.checks.count %></h3>
+            <% if current_user.checked?(@coupon) %>
+                 <%= button_to 'チェックを取り消す', coupon_check_path(@coupon), method: :delete %>
+            <% else %>
+                 <%= button_to 'チェック', coupon_checks_path(@coupon) %>
+            <% end %>
+            <h2>チェックしたユーザー</h2>
+                 <% @coupon.checkd_users.each do |user| %>
+                <li><%= user.name %></li>
+            <% end %>
         </div>
-        
+
     </div>
   </div>
 </div>

@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_09_154928) do
+ActiveRecord::Schema.define(version: 2021_07_16_180948) do
+
+  create_table "checks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "coupon_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["coupon_id"], name: "index_checks_on_coupon_id"
+    t.index ["user_id"], name: "index_checks_on_user_id"
+  end
 
   create_table "coupons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "min_setting_count", null: false
@@ -76,6 +85,8 @@ ActiveRecord::Schema.define(version: 2021_07_09_154928) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "checks", "coupons"
+  add_foreign_key "checks", "users"
   add_foreign_key "coupons", "restaurants"
   add_foreign_key "event_users", "events"
   add_foreign_key "event_users", "users", column: "member_id"
