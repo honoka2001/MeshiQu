@@ -50,6 +50,9 @@
             <p><%=event.coupon.min_setting_count %><small class="text-muted">人以上の来店で</small></p>
             <p><%=event.coupon.content %></p>
           </div>
+          <%= link_to event_path(event), method: :delete, data: {confirm: "削除しますか？"} do %>
+            このイベントを削除する
+          <% end %>
         </div>
 
       <% end %>
