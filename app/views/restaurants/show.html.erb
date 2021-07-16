@@ -53,6 +53,9 @@
                                 有効期限 : 無期限<%= @coupon.exp_date %>
                             <% end %>
                         </div>
+                        <%= link_to coupon_path(coupon), method: :delete, data: {confirm: "削除しますか？"} do %>
+                            このクーポンを削除する
+                        <% end %>
                     </div>
 
                 <% end %>
