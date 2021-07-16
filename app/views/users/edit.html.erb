@@ -1,30 +1,42 @@
-<h2>プロフィール編集</h2>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-6 mx-auto">
 
-<%= form_for @user do |f| %>
-  <div class="field">
-    <%= f.label :name, "ユーザー名", class: "label" %>
-    <%= f.text_field :name, class: "input" %>
+      <h2 class="text-primary">プロフィール編集</h2>
+
+        <%= form_for @user do |f| %>
+
+          <div class="form-group">
+            <%= f.label :name, "ユーザー名", class: "label" %>
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :school, "学校名", class: "label" %>
+            <%= f.text_field :school, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :grade, "学年", class: "label" %>
+            <%= f.number_field :grade, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :department, "学科", class: "label" %>
+            <%= f.text_field :department, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :gender, "性別", class: "label" %>
+            <%= f.number_field :gender, class: "form-control" %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "更新", class: "btn btn-primary mb-1" %>
+          </div>
+
+        <% end %>
+
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :school, "学校名", class: "label" %>
-    <%= f.text_field :school, class: "input" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :grade, "学年", class: "label" %>
-    <%= f.number_field :grade, class: "textarea" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :department, "学科", class: "label" %>
-    <%= f.text_field :department, class: "textarea" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :gender, "性別", class: "label" %>
-    <%= f.number_field :gender, class: "textarea" %>
-  </div>
-
-  <%= f.submit "更新", class: "button is-success" %>
-<% end %>
+</div>
