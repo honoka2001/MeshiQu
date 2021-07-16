@@ -16,4 +16,8 @@ class User < ApplicationRecord
     participate_events.include?(event)
   end
 
+  def checked?(coupon)
+    checkd_coupons.include?(coupon)
+  end
+
 end
