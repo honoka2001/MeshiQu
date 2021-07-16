@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :participate_events, through: :event_users, source: :event
 
   def participate?(event)
-    participates.include?(event)
+    participate_events.include?(event)
   end
 
 end
