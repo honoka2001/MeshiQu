@@ -3,5 +3,5 @@ class Event < ApplicationRecord
     belongs_to :coupon
 
     has_many :event_users
-    has_many :members ,through: :event_users, source: :user
+    has_many :participate_users, through: :event_users, source: :member
 end
