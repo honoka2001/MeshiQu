@@ -24,6 +24,11 @@
                     有効期限 : 無期限<%= @coupon.exp_date %>
                 <% end %>
             </div>
+            <% if current_user.checked?(@coupon) %>
+                 <%= button_to 'チェックを取り消す', coupon_check_path(@coupon), method: :delete %>
+            <% else %>
+                 <%= button_to 'チェック', coupon_checks_path(@coupon) %>
+            <% end %>
         </div>
         
     </div>
