@@ -34,6 +34,12 @@ class CouponsController < ApplicationController
     end
   end
 
+  def destroy
+    coupon = Coupon.find(params[:id])
+    coupon.destroy
+    redirect_back(fallback_location: root_path)
+  end
+
   private
   def coupon_params
     params.require(:coupon).permit(:min_setting_count, :content, :exp_date)
