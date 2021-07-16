@@ -16,6 +16,12 @@
                     <p><%=event.coupon.min_setting_count %><small class="text-muted">人以上の来店で</small></p>
                     <p><%=event.coupon.content %></p>
                 </div>
+                <div class="card-footer bg-success">
+                    <h5 class="text-white">現在のメンバー</h5>
+                    <% event.participate_users.each do |user| %>
+                        <p class="text-white"><%= user.name %></p>
+                    <% end %>
+                </div> 
             </div>
 
         <% end %>
