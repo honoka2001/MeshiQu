@@ -39,7 +39,7 @@ class EventsController < ApplicationController
   def destroy
     event = Event.find(params[:id])
     event.destroy
-    redirect_to controller: :users, action: :show, id: current_user.id
+    redirect_back(fallback_location: root_path)
   end
 
   private
