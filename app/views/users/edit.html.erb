@@ -1,0 +1,30 @@
+<h2>プロフィール編集</h2>
+
+<%= form_for @user do |f| %>
+  <div class="field">
+    <%= f.label :name, "ユーザー名", class: "label" %>
+    <%= f.text_field :name, class: "input" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :school, "学校名", class: "label" %>
+    <%= f.text_field :school, class: "input" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :grade, "学年", class: "label" %>
+    <%= f.number_field :grade, class: "textarea" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :department, "学科", class: "label" %>
+    <%= f.text_field :department, class: "textarea" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gender, "性別", class: "label" %>
+    <%= f.number_field :gender, class: "textarea" %>
+  </div>
+
+  <%= f.submit "更新", class: "button is-success" %>
+<% end %>

@@ -5,7 +5,7 @@
       <% if @user.id == current_user.id %>
         <h2 class="text-center m-5 text-primary">マイページ</h2>
         <div class="text-center mb-5" >
-          <button type="button" class="btn btn-outline-primary btn-lg">編集する</button> 
+          <%= link_to "編集する", edit_user_path(@user), class: "btn btn-outline-primary btn-lg" %>
         </div>      
       <% else %>
         <h2 class="text-center m-5 text-primary">@user.name ページ</h2>
