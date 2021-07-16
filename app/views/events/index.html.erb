@@ -18,8 +18,12 @@
                 </div>
                 <div class="card-footer bg-success">
                     <h5 class="text-white">現在のメンバー</h5>
-                    <% event.participate_users.each do |user| %>
-                        <p class="text-white"><%= user.name %></p>
+                    <% if event.participate_users.empty? %>
+                        <p class="text-white">参加メンバーはいません。</p>
+                    <% else %>
+                        <% event.participate_users.each do |user| %>
+                            <p class="text-white"><%= user.name %></p>
+                        <% end %>
                     <% end %>
                 </div> 
             </div>
