@@ -1,0 +1,33 @@
+<div class="card text-center">
+	<div class="card-header pt-1 bg-info text-white">
+	<p class="card-text">
+		<small class="text-white">更新日：<%= coupon.updated_at.strftime("%Y-%m-%d") %></small>
+	</p>
+	<h4><%=coupon.restaurant.name %></h4>
+	</div>
+	<div class="card-body">
+		<h5 class="card-title">
+			<%= coupon.min_setting_count %>
+			<small>人以上の来店で利用可能</small>
+		</h5>
+		<h3 class="card-text"><%= simple_format coupon.content %></h3>
+		<%= button_to "このクーポンでイベントを投稿する", new_event_path, { method: :get, params: {coupon_id: coupon.id} } %>
+	</div>
+	<div class="card-footer bg-info text-white">
+		<% if coupon.exp_date %>
+			有効期限 : <%= coupon.exp_date %>
+		<% else %>
+			有効期限 : 無期限<%= coupon.exp_date %>
+		<% end %>
+	</div>
+	<h3>チェック件数: <%= coupon.checks.count %></h3>
+	<% if current_user.checked?(coupon) %>
+		<%= button_to 'チェックを取り消す', coupon_check_path(coupon), method: :delete %>
+	<% else %>
+		<%= button_to 'チェック', coupon_checks_path(coupon) %>
+	<% end %>
+	<h2>チェックしたユーザー</h2>
+	<% coupon.checkd_users.each do |user| %>
+		<li><%= user.name %></li>
+	<% end %>
+</div>
