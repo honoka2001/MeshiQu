@@ -1,65 +1,72 @@
 <div class="container mt-5">
-    <div class="row">
-　      <div class="col-6 mx-auto">
-            <% if @restaurant.id == current_restaurant.id %>
-                <h2 class="text-center m-5 text-primary">マイページ</h2>
-                <div class="text-center mb-5" >
-                     <button type="button" class="btn btn-outline-primary btn-lg">編集する</button> 
-               </div>      
-            <% else %>
-                <h2 class="text-center m-5 text-primary">@restaurant.name ページ</h2>
-            <% end %>
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <% if @restaurant.id == current_restaurant.id %>
+        <h2 class="text-center m-5 text-primary">マイページ</h2>
+        <div class="text-center mb-5" >
+          <%= link_to "編集", edit_restaurant_registration_path, class: "btn btn-outline-primary btn-lg" %>
+        </div>      
+      <% else %>
+        <h2 class="text-center m-5 text-primary">@restaurant.name ページ</h2>
+      <% end %>
 
-            <div>
-                <h4 class="card-text">
-                    <small>店舗名</small> : <%= @restaurant.name %>
-                </h4>
-                <h4 class="card-text">
-                    <small>住所</small> : <%= @restaurant.address %>
-                </h4>
-                <% if @restaurant.id == current_restaurant.id %>
-                    <h4 class="card-text">
-                        <small>メールアドレス</small> : <%= @restaurant.email %>
-                    </h4>
+      <div>
+        <h4 class="card-text">
+          <small>店舗名</small> : <%= @restaurant.name %>
+        </h4>
+        <h4 class="card-text">
+          <small>住所</small> : <%= @restaurant.address %>
+        </h4>
+        <% if @restaurant.id == current_restaurant.id %>
+          <h4 class="card-text">
+            <small>メールアドレス</small> : <%= @restaurant.email %>
+          </h4>
+        <% end %>
+      </div>
+
+      <div class="mb-4">
+        <h4 class="text-center text-info mt-5 mb-3">投稿したクーポン</h4>
+
+        <% @restaurant.coupons.each do |coupon| %>
+            <hr>
+
+            <div class="card text-center">
+
+              <div class="card-header pt-1 bg-info text-white">
+                <p class="card-text">
+                  <small class="text-white">更新日：<%= coupon.updated_at.strftime("%Y-%m-%d") %></small>
+                </p>
+                <h4><%=coupon.restaurant.name %></h4>
+              </div>
+
+              <div class="card-body">
+                <h5 class="card-title">
+                  <%= coupon.min_setting_count %>
+                  <small>人以上の来店で利用可能</small>
+                </h5>
+                <h3 class="card-text"><%= simple_format coupon.content %></h3>
+                  <% if user_signed_in? %>
+                      <%= button_to "このクーポンでイベントを投稿する", new_event_path, { method: :get, params: {coupon_id: coupon.id} } %>  
+                  <% end %>
+              </div>
+
+              <div class="card-footer bg-info text-white">
+                <% if coupon.exp_date %>
+                  有効期限 : <%= coupon.exp_date %>
+                <% else %>
+                  有効期限 : 無期限<%= @coupon.exp_date %>
                 <% end %>
+              </div>
+
+              <%= link_to coupon_path(coupon), method: :delete, data: {confirm: "削除しますか？"} do %>
+                このクーポンを削除する
+              <% end %>
+
             </div>
 
-            <div class="mb-4">
-              <h4 class="text-center text-info mt-5 mb-3">投稿したクーポン</h4>
-                 <% @restaurant.coupons.each do |coupon| %>
-                    <hr>
+        <% end %>
 
-                    <div class="card text-center">
-                        <div class="card-header pt-1 bg-info text-white">
-                        <p class="card-text">
-                            <small class="text-white">更新日：<%= coupon.updated_at.strftime("%Y-%m-%d") %></small>
-                        </p>
-                        <h4><%=coupon.restaurant.name %></h4>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                <%= coupon.min_setting_count %>
-                                <small>人以上の来店で利用可能</small>
-                            </h5>
-                            <h3 class="card-text"><%= simple_format coupon.content %></h3>
-                             <% if user_signed_in? %>
-                                 <%= button_to "このクーポンでイベントを投稿する", new_event_path, { method: :get, params: {coupon_id: coupon.id} } %>  
-                             <% end %>
-                        </div>
-                        <div class="card-footer bg-info text-white">
-                            <% if coupon.exp_date %>
-                                有効期限 : <%= coupon.exp_date %>
-                            <% else %>
-                                有効期限 : 無期限<%= @coupon.exp_date %>
-                            <% end %>
-                        </div>
-                        <%= link_to coupon_path(coupon), method: :delete, data: {confirm: "削除しますか？"} do %>
-                            このクーポンを削除する
-                        <% end %>
-                    </div>
-
-                <% end %>
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
 </div>
