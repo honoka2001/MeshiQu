@@ -7,7 +7,7 @@
         <div class="text-center mb-5" >
           <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-outline-primary btn-lg" %>
           <%= link_to "登録情報編集", edit_user_registration_path, class: "btn btn-outline-danger btn-lg" %>
-        </div>      
+        </div>
       <% else %>
         <h2 class="text-center m-5 text-primary">@user.name ページ</h2>
       <% end %>
@@ -21,7 +21,7 @@
         </h4>
         <h4 class="card-text">
           <small>学年</small> : <%= @user.grade %>
-        </h4>          
+        </h4>
         <h4 class="card-text">
           <small>学科</small> : <%= @user.department %>
         </h4>
@@ -79,27 +79,7 @@
       <% end %>
 
       <h3 class="m-3">チェッククーポン</h3>
-      <% @user.checkd_coupons.each do |coupon| %>
-       <div class="card mb-4" style="min-width: 200px;">
-          <div class="card-body">
-              <h5 class="card-title"><small class="text-muted">店舗名</small><br><%=coupon.restaurant.name %></h5>
-              <p><%=coupon.min_setting_count %><small class="text-muted">人以上で</small></p>
-              <p class="card-text"><%=coupon.content %></p>
-              <%=link_to 'クーポン詳細', coupon_path(coupon.id) %>
-          </div>
-          <div class="card px-3 py-2 mb-3">
-              <small class="text-muted">有効期限</small>
-              <% if coupon.exp_date %>
-                  <%=coupon.exp_date %>
-              <% else %>
-                  無期限 
-              <% end %>
-          </div>
-          <div class="mx-auto mb-3">
-              <%= button_to "イベントを投稿する", new_event_path, { method: :get, params: {coupon_id: coupon.id} } %>
-          </div>
-       </div>
-      <% end %>
+      <%= render partial: 'coupons/coupon', collection: @user.checkd_coupons %>
 
     </div>
   </div>
