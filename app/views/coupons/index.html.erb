@@ -1,28 +1,8 @@
 <div class="container mt-5">
     <h2 class="text-center m-5 text-info">クーポン一覧</h2>
     <div class="card-deck m-0">
-        <% @coupons.each do |coupon| %>
 
-            <div class="card mb-4" style="min-width: 200px;">
-                <div class="card-body">
-                    <h5 class="card-title"><small class="text-muted">店舗名</small><br><%=coupon.restaurant.name %></h5>
-                    <p><%=coupon.min_setting_count %><small class="text-muted">人以上で</small></p>
-                    <p class="card-text"><%=coupon.content %></p>
-                    <%=link_to 'クーポン詳細', coupon_path(coupon.id) %>
-                </div>
-                <div class="card px-3 py-2 mb-3">
-                    <small class="text-muted">有効期限</small>
-                    <% if coupon.exp_date %>
-                        <%=coupon.exp_date %>
-                    <% else %>
-                        無期限 
-                    <% end %>
-                </div>
-                <div class="mx-auto mb-3">
-                    <%= button_to "イベントを投稿する", new_event_path, { method: :get, params: {coupon_id: coupon.id} } %>
-                </div>
-            </div>
+        <%= render @coupons %>
 
-        <% end %>
     </div>
 </div>

@@ -12,9 +12,7 @@
                     <%=link_to 'イベント詳細', event_path(event.id)%>
                 </div>
                 <div class="card-footer pt-0">
-                　  <p><%=event.coupon.restaurant.name %></p>
-                    <p><%=event.coupon.min_setting_count %><small class="text-muted">人以上の来店で</small></p>
-                    <p><%=event.coupon.content %></p>
+                    <%= render 'coupons/coupon', coupon: event.coupon %>
                 </div>
                 <div class="card-footer bg-success">
                     <h5 class="text-white">現在のメンバー</h5>
