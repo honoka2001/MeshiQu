@@ -1,0 +1,8 @@
+<h2>プロフィール編集</h2>
+<%= form_for @restaurant do |f| %>
+  <%= f.label :name %><br />
+  <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+  <%= f.label :address %><br />
+  <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+  <%= f.submit "更新" %>
+<% end %>
