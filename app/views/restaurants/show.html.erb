@@ -4,7 +4,8 @@
       <% if @restaurant.id == current_restaurant.id %>
         <h2 class="text-center m-5 text-primary">マイページ</h2>
         <div class="text-center mb-5" >
-          <%= link_to "編集", edit_restaurant_registration_path, class: "btn btn-outline-primary btn-lg" %>
+          <%= link_to "プロフィール編集", edit_restaurant_path(@restaurant), class: "btn btn-outline-primary btn-lg" %>
+          <%= link_to "登録情報編集", edit_restaurant_registration_path, class: "btn btn-outline-primary btn-lg" %>
         </div>      
       <% else %>
         <h2 class="text-center m-5 text-primary">@restaurant.name ページ</h2>
