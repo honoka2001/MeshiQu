@@ -1,12 +1,12 @@
-      <%= form_for @event do |f| %>
+      <%= form_for event do |f| %>
 
         <%= f.hidden_field :coupon_id, :value => @event.coupon_id %>
 
         <div class="form-group">
-          <h4>店舗名:<%= @coupon.restaurant.name %></h4>
-          <h4><%= @coupon.min_setting_count %>人以上で</h4>
-          <h4><%= @coupon.content %></h4>
-          <h4>有効期限:<%= @coupon.exp_date %></h4>
+          <h4>店舗名:<%= coupon.restaurant.name %></h4>
+          <h4><%= coupon.min_setting_count %>人以上で</h4>
+          <h4><%= coupon.content %></h4>
+          <h4>有効期限:<%= coupon.exp_date %></h4>
         </div>
 
         <div class="form-group">

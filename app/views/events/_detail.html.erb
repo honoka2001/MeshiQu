@@ -1,25 +1,25 @@
 <div class="card text-center">
   <div class="card-header pt-1 bg-success text-white">
   <p class="card-text">
-    <small class="text-white">更新日：<%= @event.updated_at.strftime("%Y-%m-%d") %></small>
+    <small class="text-white">更新日：<%= event.updated_at.strftime("%Y-%m-%d") %></small>
   </p>
-  <h4><%=@event.host.name %></h4>
+  <h4><%= event.host.name %></h4>
   </div>
   <div class="card-body">
     <h5 class="card-title">
-    開催日 <%= @event.event_date %>
+    開催日 <%= event.event_date %>
     </h5>
     <h5 class="card-title">
-      <%= @event.setting_count %>
+      <%= event.setting_count %>
       <small>人募集</small>
     </h5>
-    <h3 class="card-text"><%= simple_format @event.content %></h3>
+    <h3 class="card-text"><%= simple_format event.content %></h3>
   </div>
   <div class="card-footer bg-success text-white">
-    <% if @event.deadline_date %>
-    <small>募集締め切り日 : <%= @event.deadline_date %></small>
+    <% if event.deadline_date %>
+    <small>募集締め切り日 : <%= event.deadline_date %></small>
     <% else %>
-    <small>募集締め切り日 : 無期限<%= @event.deadline_date %></small>
+    <small>募集締め切り日 : 無期限<%= event.deadline_date %></small>
     <% end %>
   </div>
 
@@ -28,6 +28,6 @@
 <div class="card text-center p-3 ">
 
   <p class="mb-2 mt-3 text-center">使用するクーポン</p>
-    <%= render 'coupons/detail', coupon: @event.coupon %>
+    <%= render 'coupons/detail', coupon: event.coupon %>
 
 </div>
