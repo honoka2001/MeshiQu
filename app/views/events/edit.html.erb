@@ -3,39 +3,7 @@
     <div class="col-6 mx-auto">
 
       <h2 class="text-primary">イベント編集</h2>
-
-        <%= form_for @event do |f| %>
-
-          <div class="form-group">
-            <%= f.label :setting_count, "募集人数" %>
-            <%= f.number_field :setting_count, class: "form-control" %>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :prace, "集合場所" %>
-            <%= f.text_field :prace, class: "form-control" %>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :content, "募集内容" %>
-            <%= f.text_field :content, class: "form-control" %>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :event_date, "イベント日時" %>
-            <%= f.date_field :event_date, class: "form-control" %>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :deadline_date, "募集締め切り" %>
-            <%= f.date_field :deadline_date, class: "form-control" %>
-          </div>
-
-          <div class="actions">
-            <%= f.submit "更新", class: "btn btn-primary mb-1" %>
-          </div>
-
-        <% end %>
+      <%= render 'form', event: @event, coupon: @coupon %>
 
     </div>
   </div>

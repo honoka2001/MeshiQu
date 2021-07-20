@@ -1,56 +1,24 @@
 <div class="container my-5">
   <div class="row">
-  <div class="col-6 mx-auto">
+    <div class="col-6 mx-auto">
 
-    <div class="text-center mb-5">
-      <% if @event.host_id == current_user.id %>
-        <%= link_to "編集画面へ", edit_event_path(@event), class: "btn btn-success btn-lg" %>
-      <% else %>
-        <% if current_user.participate?(@event) %>
+      <div class="text-center mb-5">
+        <% if @event.host_id == current_user.id %>
+          <%= link_to "編集画面へ", edit_event_path(@event), class: "btn btn-success btn-lg" %>
+        <% else %>
+          <% if current_user.participate?(@event) %>
             <%= link_to event_participates_path(@event), method: :delete do %>
-                参加を取り消す
+              参加を取り消す
             <% end %>
         <% else %>
             <%= link_to event_participates_path(@event), method: :post do %>
-                参加する
+              参加する
             <% end %>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
 
-        <div class="card text-center">
-            <div class="card-header pt-1 bg-success text-white">
-            <p class="card-text">
-                <small class="text-white">更新日：<%= @event.updated_at.strftime("%Y-%m-%d") %></small>
-            </p>
-            <h4><%=@event.host.name %></h4>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">
-                開催日 <%= @event.event_date %>
-                </h5>
-                <h5 class="card-title">
-                    <%= @event.setting_count %>
-                    <small>人募集</small>
-                </h5>
-                <h3 class="card-text"><%= simple_format @event.content %></h3>
-            </div>
-            <div class="card-footer bg-success text-white">
-                <% if @event.deadline_date %>
-                <small>募集締め切り日 : <%= @event.deadline_date %></small>
-                <% else %>
-                <small>募集締め切り日 : 無期限<%= @event.deadline_date %></small>
-                <% end %>
-            </div>
-
-
-        </div>
-
-        <div class="card text-center p-3 ">
-
-            <p class="mb-2 mt-3 text-center">使用するクーポン</p>
-             <%= render 'coupons/detail', coupon: @event.coupon %>
-        </div>
+      <%= render 'detail', event: @event %>
 
     </div>
   </div>
