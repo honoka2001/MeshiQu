@@ -1,14 +1,15 @@
-Rails.application.routes.draw do
+# frozen_string_literal: true
 
+Rails.application.routes.draw do
   devise_for :restaurants, controllers: {
-    sessions:      'restaurants/sessions',
-    passwords:     'restaurants/passwords',
+    sessions: 'restaurants/sessions',
+    passwords: 'restaurants/passwords',
     registrations: 'restaurants/registrations'
   }
 
   devise_for :users, controllers: {
-    sessions:      'users/sessions',
-    passwords:     'users/passwords',
+    sessions: 'users/sessions',
+    passwords: 'users/passwords',
     registrations: 'users/registrations'
   }
 
@@ -16,13 +17,12 @@ Rails.application.routes.draw do
   resources :restaurants
 
   resources :coupons do
-    resources :checks, only: [:create, :destroy]
+    resources :checks, only: %i[create destroy]
   end
 
   resources :events do
-    resource :participates, only: [:create, :destroy]
+    resource :participates, only: %i[create destroy]
   end
 
-  root to: "homes#index"
-
+  root to: 'homes#index'
 end
