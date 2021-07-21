@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class RestaurantsController < ApplicationController
-  before_action :authenticate_restaurant!, except: [:show, :index]
+  before_action :authenticate_restaurant!, except: %i[show index]
   def index
     @restaurants = Restaurant.all
   end
@@ -22,8 +24,8 @@ class RestaurantsController < ApplicationController
   end
 
   private
+
   def restaurant_params
     params.require(:restaurant).permit(:name, :address)
   end
-
 end

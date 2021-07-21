@@ -20,3 +20,6 @@
 
 ### サーバの停止
 `docker-compose down`
+
+### rubocop
+`docker-compose run web　bundle exec rubocop -a`
