@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_16_180948) do
+ActiveRecord::Schema.define(version: 2021_07_23_124419) do
 
   create_table "checks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "coupon_id"
@@ -44,12 +44,13 @@ ActiveRecord::Schema.define(version: 2021_07_16_180948) do
     t.integer "setting_count", null: false
     t.string "prace", null: false
     t.text "content", null: false
-    t.date "event_date", null: false
+    t.datetime "event_date", null: false
     t.date "deadline_date"
     t.bigint "coupon_id"
     t.bigint "host_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title"
     t.index ["coupon_id"], name: "index_events_on_coupon_id"
     t.index ["host_id"], name: "index_events_on_host_id"
   end
