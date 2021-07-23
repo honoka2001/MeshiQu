@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class CouponsController < ApplicationController
   def index
     @coupons = Coupon.all
@@ -44,8 +42,8 @@ class CouponsController < ApplicationController
   end
 
   private
-
   def coupon_params
     params.require(:coupon).permit(:min_setting_count, :content, :exp_date)
   end
+
 end

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class EventsController < ApplicationController
   def index
     @events = Event.all
@@ -19,9 +17,9 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.host_id = current_user.id
     if @event.save!
-      redirect_to events_path, notice: '投稿に成功しました。'
-    else
-      render :new
+        redirect_to events_path, notice: '投稿に成功しました。'
+      else
+        render :new
     end
   end
 
@@ -45,8 +43,8 @@ class EventsController < ApplicationController
   end
 
   private
-
   def event_params
     params.require(:event).permit(:setting_count, :prace, :content, :event_date, :deadline_date, :coupon_id)
   end
+
 end

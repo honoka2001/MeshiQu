@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Check < ApplicationRecord
   belongs_to :coupon
   belongs_to :user
