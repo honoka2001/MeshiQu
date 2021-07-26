@@ -15,3 +15,90 @@
  */
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+@import "partials/*";
+
+// グラデーションカラー
+$color1:#FF6959;
+$color2:#FF7E59;
+$color3:#FF905A;
+
+//アクセントカラー
+$accent-color:#E60115;
+
+$base-color:#513C3B;
+$bg-color:#EDF6F6;
+
+body {
+	font-size: 12px;
+	line-height: 1.6em;
+	font-family: "游ゴシック体", "YuGothic", "游ゴシック", "Yu Gothic", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif;
+	background-color: $bg-color;
+}
+
+a:link {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+
+// ヘッダー
+
+.header {
+	box-sizing: border-box;
+	width: 100%;
+	background-color: #fff;
+
+	.logo img {
+		width: 200px;
+	}
+
+	.inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		max-width: 1024px;
+		height: 60px;
+		padding: 0 0.8em;
+		margin: 0 auto;
+	}
+
+	.nav {
+		display: flex;
+		align-items: center;
+
+		.nav-item {
+			color: $base-color;
+			display: flex;
+			align-items: center;
+		}
+	}
+
+	.button {
+		color: $base-color;
+		box-sizing: border-box;
+		display: inline-block;
+		padding: 0.5em 1em;
+		text-decoration: none;
+		cursor: pointer;
+		user-select: none;
+		font-weight: bold;
+
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+
+	// 新規投稿ボタン
+	.post {
+		color: #fff;
+		background: $accent-color;
+		border: 1px $accent-color solid;
+		border-radius: 50px;
+		margin-left: 10px;
+		font-weight: normal;
+	}
+
+}
