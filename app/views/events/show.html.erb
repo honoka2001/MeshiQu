@@ -1,25 +1,31 @@
-<div class="container my-5">
-  <div class="row">
-    <div class="col-6 mx-auto">
 
+      <%= render 'detail', event: @event %>
+      <div style="height: 10px;"></div>
       <div class="text-center mb-5">
         <% if @event.host_id == current_user.id %>
           <%= link_to "編集画面へ", edit_event_path(@event), class: "btn btn-success btn-lg" %>
         <% else %>
           <% if current_user.participate?(@event) %>
-            <%= link_to event_participates_path(@event), method: :delete do %>
+            <%= link_to event_participates_path(@event), method: :delete, class:"event_btn" do %>
               参加を取り消す
             <% end %>
         <% else %>
-            <%= link_to event_participates_path(@event), method: :post do %>
-              参加する
+            <%= link_to event_participates_path(@event), method: :post, class:"event_btn" do %>
+              このイベントに参加する
             <% end %>
           <% end %>
         <% end %>
       </div>
-
-      <%= render 'detail', event: @event %>
-
-    </div>
-  </div>
-</div>
+      <div class="participate_area">
+        <h4>参加者</h4>
+        <div class="host mt-3">
+          <p class="font-weight-bold mr-1 mb-0 host_tag">ホスト</p>
+          <h5 class="mb-0"><%= @event.host.name %></h5>
+        </div>
+        <div class="member">
+          <% @event.participate_users.each do |member| %>
+            <p class="font-weight-bold mr-1 mb-0 member_tag">メンバー</p>
+            <h5 class="mb-0 mr-3"><%= member.name %></h5>
+          <% end %>
+        </div>
+      </div>

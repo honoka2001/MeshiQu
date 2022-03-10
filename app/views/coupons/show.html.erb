@@ -1,10 +1,7 @@
-<div class="container mt-5">
-  <div class="row">
-  <div class="col-6 mx-auto">
 
-        <%= link_to "編集画面へ", edit_coupon_path(@coupon), class: "btn btn-info btn-lg" %>
-        <%= render 'detail', coupon: @coupon %>
-
-    </div>
-  </div>
-</div>
+<%
+=begin%>
+ <%= link_to "編集画面へ", edit_coupon_path(@coupon), class: "coupon_btn text-center" %> 
+<%
+=end%>
+<%= render 'detail', coupon: @coupon %>

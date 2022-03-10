@@ -15,3 +15,168 @@
  */
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+@import "partials/*";
+
+// グラデーションカラー
+$color1:#FF6959;
+$color2:#FF7E59;
+$color3:#FF905A;
+
+//アクセントカラー
+$accent-color:#E60115;
+
+$base-color:#513C3B;
+$bg-color:#EDF6F6;
+
+body {
+	font-size: 12px;
+	line-height: 1.6em;
+	font-family: "游ゴシック体", "YuGothic", "游ゴシック", "Yu Gothic", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif;
+	background-color: $bg-color;
+	color: #513C3B;
+}
+
+a:link {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+
+// ヘッダー
+
+.header {
+	box-sizing: border-box;
+	width: 100%;
+	background-color: #fff;
+
+	.logo img {
+		width: 200px;
+	}
+
+	.inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		max-width: 1024px;
+		height: 60px;
+		padding: 0 0.8em;
+		margin: 0 auto;
+	}
+
+	.nav {
+		display: flex;
+		align-items: center;
+
+		.nav-item {
+			color: $base-color;
+			display: flex;
+			align-items: center;
+		}
+	}
+
+	.button {
+		color: $base-color;
+		box-sizing: border-box;
+		display: inline-block;
+		padding: 0.5em 1em;
+		text-decoration: none;
+		cursor: pointer;
+		user-select: none;
+		font-weight: bold;
+
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+
+	// 新規投稿ボタン
+	.post {
+		color: #fff;
+		background: $accent-color;
+		border: 1px $accent-color solid;
+		border-radius: 50px;
+		margin-left: 10px;
+		font-weight: normal;
+	}
+
+}
+
+// ナビゲーション
+nav {
+	background-color: #fff;
+}
+
+.gnavi {
+  list-style: none;
+	display: flex;
+	max-width: 1024px;
+	align-items: center;
+	justify-content: center;
+	margin: 0 auto;
+	padding: 0;
+}
+
+.gnavi li a{
+  display: block;
+	padding: 8px 15px;
+  text-decoration: none;
+  color: $base-color;
+	font-weight: bold;
+	font-size: 1.4em;
+}
+
+.gnavi li{
+    margin-bottom:5px;
+}
+
+.gnavi li a{
+	position: relative;
+}
+
+.gnavi li.current a,
+.gnavi li a:hover{
+	color:$base-color;
+}
+
+.gnavi li a::after {
+    content: '';
+    /*絶対配置で線の位置を決める*/
+    position: absolute;
+    bottom: 0;
+    left: 12%;
+    /*線の形状*/
+    width: 76%;
+    height: 3px;
+    background:$base-color;
+    /*アニメーションの指定*/
+    transition: all .3s;
+    transform: scale(0, 1);/*X方向0、Y方向1*/
+    transform-origin: center top;/*上部中央基点*/
+}
+
+/*現在地とhoverの設定*/
+.gnavi li.current a::after,
+.gnavi li a:hover::after {
+    transform: scale(1, 1);/*X方向にスケール拡大*/
+}
+
+.intro{
+	background-color: #fff;
+	width: 100vw;
+	height: 60vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.intro h3, .intro img{
+  opacity: 0; /* ←初期値を変更。透明に。*/
+  animation: 2s fadeIn forwards; /* ←追加 */
+}
+@keyframes fadeIn { /* ←追加 */
+	from { opacity: 0; }
+	to { opacity: 1; }
+}

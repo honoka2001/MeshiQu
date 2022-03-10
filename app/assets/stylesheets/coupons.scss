@@ -1,3 +1,112 @@
 // Place all the styles related to the coupons controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.coupon_container{
+	width: 70vw;
+	margin: 0 auto;
+}
+.coupon_card{
+	position: relative;
+	background-color: #fff;
+	width: 70vw;
+	margin-bottom: 30px;
+	border-radius: 20px;
+	text-align: center;
+	color: #513C3B;
+}
+.min_setting_count{
+	background-color: #513C3B;
+	color: #fff;
+	padding: 10px;
+	margin: 0 0 20px 0;
+	border-radius: 10px 10px 0 0;
+}
+.min_setting_count p{
+	margin: 0;
+	padding: 0;
+	font-size: 0.8rem;
+}
+.min_setting_count p strong{
+	font-size: 1rem;
+}
+.coupon_btn{
+	background-color: #513C3B;
+	color: #fff;
+	border-radius: 50px;
+	padding: 0.5rem 1rem;
+	font-size: 1rem;
+	border: 2px #513C3B solid;
+	margin-bottom: 1.4rem;
+}
+.coupon_btn:hover{
+	opacity: .8;
+	color: #fff;
+}
+.check_btn{
+	background-color: #513C3B;
+	color: #fff;
+	border-radius: 50px;
+	padding: 5px 8px;
+	font-size: 0.5rem;
+	border: 2px #513C3B solid;
+	margin-bottom: 1.4rem;
+}
+.check_btn:hover{
+	opacity: .8;
+}
+.count_area{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 15%;
+	height: 100%;
+	position: absolute;
+	background-color: #fff;
+	right: 0;
+	padding: 1rem;
+	border-left: 0.5px #513C3B dotted;
+	border-radius: 0 10px 10px 0;
+}
+.count_area p{
+	font-size: 1rem;
+}
+.count_area strong{
+	font-size: 1.3rem;
+}
+.btn_area{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}
+.date_area{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 15%;
+	height: 100%;
+	position: absolute;
+	background-color: #513C3B;
+	color: #fff;
+	padding: 1rem;
+	border-right: 0.5px #fff solid;
+	border-radius: 10px 0 0 10px;
+}
+.date_area p{
+	font-size: 1rem;
+}
+
+.detail_coupon{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: #fff;
+	margin: 10px auto;
+	width: 80%;
+	right: 0;
+	border-radius: 10px;
+	box-shadow: 2px 2px 4px #ccc;
+}

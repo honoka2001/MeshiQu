@@ -11,35 +11,51 @@
 
   <body>
 
-    <nav class="navbar navbar-light bg-light">
-      <%= link_to 'MeshiQu', root_path, class: "navbar-brand font-weight-bold" %>
-      <div class = "d-flex flex-row-reverse bd-highlight">
-
-        <% if restaurant_signed_in? %>
-          <h3><%= link_to "ログアウト[店]", destroy_restaurant_session_path, method: :delete, class: "btn btn-danger mx-1" %><h3>
-          <h3><%= link_to 'マイページ[店]', restaurant_path(current_restaurant), class: "btn btn-success mx-1" %><h3>
-          <h3><%= link_to 'クーポン作成', new_coupon_path, class: "btn btn-info mx-1" %><h3>
-        <% elsif user_signed_in? %>
-          <h3><%= link_to "ログアウト[ユーザー]", destroy_user_session_path, method: :delete , class: "btn btn-danger mx-1"%><h3>
-          <h3><%= link_to 'マイページ[ユーザー]', user_path(current_user), class: "btn btn-primary mx-1" %><h3>
-          <h3><%= link_to 'クーポン一覧', coupons_path, class: "btn btn-info mx-1" %><h3>
-          <h3><%= link_to 'イベント一覧', events_path, class: "btn btn-success mx-1" %><h3>
-        <% else %>
-          <h3><%= link_to "新規登録[店]", new_restaurant_registration_path, class: "btn btn-primary mx-1" %></h3>
-          <h3><%= link_to "ログイン[店]", new_restaurant_session_path, class: "btn btn-primary mx-1" %></h3>
-          <h3><%= link_to "新規登録[ユーザー]", new_user_registration_path, class: "btn btn-primary mx-1" %></h3>
-          <h3><%= link_to "ログイン[ユーザー]", new_user_session_path, class: "btn btn-primary mx-1" %></h3>
-        <% end %>
-        
-      </div>
-    </nav>
-
     <% if flash[:notice] %>
       <div class="alert alert-primary" role="alert"><strong><%= notice %></strong></div>
     <% end %>
     <% if flash[:alert] %>
       <div class="alert alert-danger" role="alert"><strong><%= alert %></strong></div>
     <% end %>
+
+    <header class="header">
+      <div class="inner">
+        <%= link_to(coupons_path, class: 'logo') do %>
+          <%= image_tag "meshiqu.svg" %>
+        <% end %>
+        <nav class="nav">
+          <% if restaurant_signed_in? %>
+            <div class="nav-item">
+              <%= link_to "ログアウト", destroy_restaurant_session_path, method: :delete, class: "button" %>
+            </div>
+            <div class="nav-item">
+              <%= link_to 'マイページ', restaurant_path(current_restaurant), class: "button" %>
+            </div>
+          <% elsif user_signed_in? %>
+            <div class="nav-item">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete , class: "button"%>
+            </div>
+            <div class="nav-item">
+              <%= link_to 'マイページ', user_path(current_user), class: "button" %>
+            </div>
+          <% else %>
+            <div class="nav-item">
+              <%= link_to "店舗責任者様はこちら", new_restaurant_registration_path, class: "button" %>
+            </div>
+            <div class="nav-item">
+              <%= link_to "ログイン", new_user_session_path, class: "button" %>
+            </div>
+            <div class="nav-item">
+              <%= link_to "新規登録", new_user_registration_path, class: "button post" %>
+            </div>
+          <% end %>
+        </nav>
+      </div>
+    </header>
+
+
+
     <%= yield %>
+
   </body>
 </html>

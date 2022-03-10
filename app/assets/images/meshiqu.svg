@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="245.25" height="55" viewBox="0 0 245.25 55">
+  <defs>
+    <linearGradient id="linear-gradient" x1="1" x2="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ff7e59"/>
+      <stop offset="1" stop-color="#ff905a"/>
+    </linearGradient>
+  </defs>
+  <g id="グループ_22" data-name="グループ 22" transform="translate(-164.75 -10)">
+    <text id="MeshiQu_" data-name="MeshiQu!!" transform="translate(218 51)" fill="#ff7e59" font-size="39" font-family="KohinoorTelugu-Bold, Kohinoor Telugu" font-weight="700"><tspan x="0" y="0">MeshiQu!!</tspan></text>
+    <path id="Icon_map-food" data-name="Icon map-food" d="M42.128,12.667,38.726,39.7H27.235L23.847,12.532H37.875l2.773-9.707,1.572.48-2.66,9.342,2.569.02ZM22.222,28.307s.43-3.505-5.529-3.505H7.2c-5.95,0-5.529,3.505-5.529,3.505H22.222ZM1.674,36.194S1.253,39.7,7.2,39.7h9.491c5.959,0,5.529-3.505,5.529-3.505Zm19.656-1.753a2.008,2.008,0,0,0,1.763-2.19,2.005,2.005,0,0,0-1.763-2.192H2.484A2.009,2.009,0,0,0,.72,32.251a2.011,2.011,0,0,0,1.764,2.19H21.331Z" transform="translate(164.03 11.301)" fill="url(#linear-gradient)"/>
+  </g>
+</svg>

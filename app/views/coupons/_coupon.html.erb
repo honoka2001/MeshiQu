@@ -1,4 +1,6 @@
-<div class="card mb-4" style="min-width: 200px;">
+<%
+=begin%>
+ <div class="card mb-4 coupon" style="min-width: 200px;">
 	<div class="card-body">
 		<h5 class="card-title"><small class="text-muted">店舗名</small><br><%=coupon.restaurant.name %></h5>
 		<p><%=coupon.min_setting_count %><small class="text-muted">人以上で</small></p>
@@ -18,3 +20,54 @@
 	</div>
 
 </div>
+
+
+<%
+=end%>
+<%= link_to coupon_path(coupon.id) do %>
+
+<div class="coupon_container">
+	<div class="coupon_card">
+
+		<div class="count_area">
+			<div class="check_count">
+				<p>チェック数</p>
+				<strong><%= coupon.checks.count %></strong>
+			</div>
+		</div>
+
+		<div class="date_area">
+			<p>有効期限</p>
+			<h4>
+				<% if coupon.exp_date %>
+					<%=coupon.exp_date.strftime('%m/%d') %>
+				<% else %>
+					無期限
+				<% end %>
+			</h4>
+		</div>
+
+		<div class="min_setting_count">
+			<p><strong><%=coupon.min_setting_count %></strong>人以上のご来店でご利用可能</p>
+		</div>
+		<h3 class="font-weight-bold"><%=coupon.content %></h3>
+
+		<div class="restaurant m-3 pb-3">
+			<h5 class="restaurant_name m-0"><%=coupon.restaurant.name %></h5>
+			<div class="locate">
+				<%=coupon.restaurant.address %>
+			</div>
+		</div>
+
+		<%
+=begin%>
+ <div>
+			<%= button_to "このクーポンでイベント募集", new_event_path, { method: :get, class: "coupon_btn", params: {coupon_id: coupon.id} } %>
+		</div> 
+<%
+=end%>
+
+	</div>
+</div>
+
+<% end %>
