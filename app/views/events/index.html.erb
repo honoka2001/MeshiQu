@@ -1,8 +1,19 @@
-<div class="container mt-5">
-  <h2 class="text-center m-5 text-success">イベント一覧</h2>
-  <div class="card-deck m-0">
-
-  <%= render @events %>
-
-  </div>
+<nav>
+  <ul class="gnavi">
+    <li><%= link_to 'クーポン', coupons_path %></li>
+    <li class="current"><%= link_to 'イベント', events_path %></li>
+  </ul>
+</nav>
+<div class="intro">
+  <h3 class="mt-5 font-weight-bold">興味のあるイベントを探して参加しよう！</h3>
+  <%= image_tag "event.svg" %>
 </div>
+
+<div class="container mt-5">
+  <%
+=begin%>
+ <h2 class="text-center m-5">イベント一覧</h2> 
+<%
+=end%>
+</div>
+  <%= render @events %>

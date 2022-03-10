@@ -1,4 +1,6 @@
-<div class="container mt-5">
+<%
+=begin%>
+ <div class="container mt-5">
   <div class="row">
     <div class="col-6 mx-auto">
       <% if @restaurant.id == current_restaurant.id %>
@@ -47,7 +49,7 @@
                 </h5>
                 <h3 class="card-text"><%= simple_format coupon.content %></h3>
                   <% if user_signed_in? %>
-                      <%= button_to "このクーポンでイベントを投稿する", new_event_path, { method: :get, params: {coupon_id: coupon.id} } %>  
+                      <%= button_to "このクーポンでイベントを投稿する", new_event_path, { method: :get, params: {coupon_id: coupon.id} } %>
                   <% end %>
               </div>
 
@@ -71,3 +73,44 @@
     </div>
   </div>
 </div>
+<%
+=end%>
+
+<div class="intro">
+  <h3 class="font-weight-bold">マイページ</h3>
+  <%= image_tag "restaurant.svg"  %>
+
+  <% if @restaurant.id == current_restaurant.id %>
+    <div class="text-center m-3 mt-5" >
+      <%= link_to "プロフィール編集", edit_restaurant_path(@restaurant), class: "event_btn" %>
+      <%= link_to "登録情報編集", edit_restaurant_registration_path, class: "event_btn" %>
+    </div>
+  <% else %>
+    <h2 class="text-center m-5 text-primary">@restaurant.name ページ</h2>
+  <% end %>
+</div>
+
+<div class="profile mt-4">
+  <div>
+    <h4 class="card-text">
+      <small>店舗名</small> : <%= @restaurant.name %>
+    </h4>
+    <h4 class="card-text">
+      <small>住所</small> : <%= @restaurant.address %>
+    </h4>
+    <% if @restaurant.id == current_restaurant.id %>
+      <h4 class="card-text">
+        <small>メールアドレス</small> : <%= @restaurant.email %>
+      </h4>
+    <% end %>
+  </div>
+</div>
+<div class="text-center mt-5">
+  <%= link_to new_coupon_path, class:"coupon_btn text-center" do %>
+    クーポンを投稿する
+  <% end %>
+</div>
+
+<h3 class="m-3 mt-5 text-center">投稿したクーポン</h3>
+  <%= render partial: 'coupons/coupon', collection: @restaurant.coupons %>
+

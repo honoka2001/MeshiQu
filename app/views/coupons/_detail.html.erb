@@ -1,4 +1,6 @@
-<div class="card text-center">
+<%
+=begin%>
+ <div class="card text-center">
 	<div class="card-header pt-1 bg-info text-white">
 	<p class="card-text">
 		<small class="text-white">更新日：<%= coupon.updated_at.strftime("%Y-%m-%d") %></small>
@@ -30,4 +32,54 @@
 	<% coupon.checkd_users.each do |user| %>
 		<li><%= user.name %></li>
 	<% end %>
+</div> 
+<%
+=end%>
+<div class="coupon_container">
+	<div class="coupon_card mt-5">
+
+		<div class="count_area">
+			<div class="check_count">
+				<p>チェック数</p>
+				<strong><%= coupon.checks.count %></strong>
+			</div>
+		</div>
+
+		<div class="date_area">
+			<p>有効期限</p>
+			<h4>
+				<% if coupon.exp_date %>
+					<%=coupon.exp_date.strftime('%m/%d') %>
+				<% else %>
+					無期限
+				<% end %>
+			</h4>
+		</div>
+
+		<div class="min_setting_count">
+			<p><strong><%=coupon.min_setting_count %></strong>人以上のご来店でご利用可能</p>
+		</div>
+		<h3 class="font-weight-bold"><%=coupon.content %></h3>
+
+		<div class="restaurant m-3 pb-3">
+			<h5 class="restaurant_name m-0"><%=coupon.restaurant.name %></h5>
+			<div class="locate">
+				<%=coupon.restaurant.address %>
+			</div>
+		</div>
+
+
+	</div>
+	<div class="btn_area">
+		<div>
+			<%= button_to "このクーポンでイベント募集", new_event_path, { method: :get, class: "coupon_btn", params: {coupon_id: coupon.id} } %>
+		</div>
+		<div class="check ml-2">
+			<% if current_user.checked?(coupon) %>
+				<%= button_to 'チェックを取り消す', coupon_check_path(coupon), method: :delete, class: "check_btn" %>
+			<% else %>
+				<%= button_to 'チェック', coupon_checks_path(coupon), class: "check_btn" %>
+			<% end %>
+		</div>
+	</div>
 </div>

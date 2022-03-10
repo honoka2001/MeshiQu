@@ -1,86 +1,242 @@
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-6 mx-auto">
+<%
+=begin%>
+ 
+  <% if @user.id == current_user.id %>
+    <h2 class="text-center m-5 text-primary">マイページ</h2>
+    <div class="text-center mb-5" >
+      <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-outline-primary btn-lg" %>
+      <%= link_to "登録情報編集", edit_user_registration_path, class: "btn btn-outline-danger btn-lg" %>
+    </div>
+  <% else %>
+    <h2 class="text-center m-5 text-primary">@user.name ページ</h2>
+  <% end %>
 
-      <% if @user.id == current_user.id %>
-        <h2 class="text-center m-5 text-primary">マイページ</h2>
-        <div class="text-center mb-5" >
-          <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-outline-primary btn-lg" %>
-          <%= link_to "登録情報編集", edit_user_registration_path, class: "btn btn-outline-danger btn-lg" %>
-        </div>
-      <% else %>
-        <h2 class="text-center m-5 text-primary">@user.name ページ</h2>
+  <div>
+    <h4 class="card-text">
+      <small>ユーザー名</small> : <%= @user.name %>
+    </h4>
+    <h4 class="card-text">
+      <small>学校</small> : <%= @user.school %>
+    </h4>
+    <h4 class="card-text">
+      <small>学年</small> : <%= @user.grade %>
+    </h4>
+    <h4 class="card-text">
+      <small>学科</small> : <%= @user.department %>
+    </h4>
+    <h4 class="card-text">
+      <small>性別</small> : <%= @user.gender %>
+    </h4>
+    <% if @user.id == current_user.id %>
+      <h4 class="card-text">
+        <small>メールアドレス</small> : <%= @user.email %>
+      </h4>
+    <% end %>
+  </div>
+
+  <h3 class="m-3">募集イベント(ホスト)</h3>
+  <% @user.events.each do |event| %>
+
+    <div class="card mb-4" style="min-width: 200px;">
+      <div class="card-body">
+        <h5 class="card-title"><small class="text-muted">ホスト</small><%=event.host.name %></h5>
+        <p><%=event.setting_count %><small class="text-muted">人募集</small></p>
+        <p class="card-text"><%=event.content %></p>
+        <p class="card-title"><small class="text-muted">開催日</small> <%=event.event_date %></p>
+        <%=link_to 'イベント詳細', event_path(event.id)%>
+      </div>
+      <div class="card-footer pt-0">
+        <p><%=event.coupon.restaurant.name %></p>
+        <p><%=event.coupon.min_setting_count %><small class="text-muted">人以上の来店で</small></p>
+        <p><%=event.coupon.content %></p>
+      </div>
+      <%= link_to event_path(event), method: :delete, data: {confirm: "削除しますか？"} do %>
+        このイベントを削除する
       <% end %>
+    </div>
 
+  <% end %>
+
+  <h3 class="m-3">参加イベント(メンバー)</h3>
+  <% @user.participate_events.each do |event| %>
+
+    <div class="card mb-4" style="min-width: 200px;">
+      <div class="card-body">
+        <h5 class="card-title"><small class="text-muted">ホスト</small><%=event.host.name %></h5>
+        <p><%=event.setting_count %><small class="text-muted">人募集</small></p>
+        <p class="card-text"><%=event.content %></p>
+        <p class="card-title"><small class="text-muted">開催日</small> <%=event.event_date %></p>
+        <%=link_to 'イベント詳細', event_path(event.id)%>
+      </div>
+      <div class="card-footer pt-0">
+        <p><%=event.coupon.restaurant.name %></p>
+        <p><%=event.coupon.min_setting_count %><small class="text-muted">人以上の来店で</small></p>
+        <p><%=event.coupon.content %></p>
+      </div>
+    </div>
+
+  <% end %>
+
+  <h3 class="m-3">チェッククーポン</h3>
+  <%= render partial: 'coupons/coupon', collection: @user.checkd_coupons %> 
+<%
+=end%>
+<div class="intro">
+  <h3 class="font-weight-bold">マイページ</h3>
+  <%= image_tag "profile.svg" %>
+
+  <% if @user.id == current_user.id %>
+    <div class="text-center m-3" >
+      <%= link_to "プロフィール編集", edit_user_path(@user), class: "event_btn" %>
+      <%= link_to "登録情報編集", edit_user_registration_path, class: "event_btn" %>
+    </div>
+  <% else %>
+    <h2 class="text-center m-5 text-primary">@user.name ページ</h2>
+  <% end %>
+</div>
+
+<div class="profile mt-4">
+  <div>
+    <h4 class="card-text">
+      <small>ユーザー名</small> : <%= @user.name %>
+    </h4>
+    <h4 class="card-text">
+      <small>学校</small> : <%= @user.school %>
+    </h4>
+    <h4 class="card-text">
+      <small>学年</small> : <%= @user.grade %>
+    </h4>
+    <h4 class="card-text">
+      <small>学科</small> : <%= @user.department %>
+    </h4>
+    <%
+=begin%>
+ <h4 class="card-text">
+      <small>性別</small> : <%= @user.gender %>
+    </h4> 
+<%
+=end%>
+    <% if @user.id == current_user.id %>
+      <h4 class="card-text">
+        <small>メールアドレス</small> : <%= @user.email %>
+      </h4>
+    <% end %>
+  </div>
+</div>
+
+
+<h3 class="m-3 mt-5 text-center">募集イベント</h3>
+  <% @user.events.each do |event| %>
+
+    <%= link_to event_path(event.id) do %>
+
+<div class="event_container">
+	<div class="event_card">
+
+		<div class="event_date_area">
       <div>
-        <h4 class="card-text">
-          <small>ユーザー名</small> : <%= @user.name %>
-        </h4>
-        <h4 class="card-text">
-          <small>学校</small> : <%= @user.school %>
-        </h4>
-        <h4 class="card-text">
-          <small>学年</small> : <%= @user.grade %>
-        </h4>
-        <h4 class="card-text">
-          <small>学科</small> : <%= @user.department %>
-        </h4>
-        <h4 class="card-text">
-          <small>性別</small> : <%= @user.gender %>
-        </h4>
-        <% if @user.id == current_user.id %>
-          <h4 class="card-text">
-            <small>メールアドレス</small> : <%= @user.email %>
-          </h4>
-        <% end %>
+        <p class="mt-2 mb-1 p-0">開催日</p>
+        <h4 class="mb-0"><%= event.event_date.strftime('%m') %><small>月</small></h4>
+        <h4><%= event.event_date.strftime('%d') %><small>日</small></h4>
+      </div>
+      <div class="deadline_date">
+        <p class="m-0 p-0">募集締切</p>
+        <h5><%= event.deadline_date.strftime('%m/%d') %></h5>
+      </div>
+		</div>
+    <div class="seeting_count">
+      <p class="m-0 mt-2">募集人数</p>
+      <h5><%= event.setting_count %></h5>
+    </div>
+    <div class="content">
+      <div class="host mt-3">
+        <p class="font-weight-bold mr-1 mb-0 host_tag">ホスト</p>
+        <h5 class="mb-0"><%= event.host.name %></h5>
+      </div>
+      <div class="content_prace font-weight-bold">
+        <h3><%= event.content %></h3>
+        <h5><%= event.prace %></h5>
       </div>
 
-      <h3 class="m-3">募集イベント(ホスト)</h3>
-      <% @user.events.each do |event| %>
-
-        <div class="card mb-4" style="min-width: 200px;">
-          <div class="card-body">
-            <h5 class="card-title"><small class="text-muted">ホスト</small><%=event.host.name %></h5>
-            <p><%=event.setting_count %><small class="text-muted">人募集</small></p>
-            <p class="card-text"><%=event.content %></p>
-            <p class="card-title"><small class="text-muted">開催日</small> <%=event.event_date %></p>
-            <%=link_to 'イベント詳細', event_path(event.id)%>
-          </div>
-          <div class="card-footer pt-0">
-            <p><%=event.coupon.restaurant.name %></p>
-            <p><%=event.coupon.min_setting_count %><small class="text-muted">人以上の来店で</small></p>
-            <p><%=event.coupon.content %></p>
-          </div>
-          <%= link_to event_path(event), method: :delete, data: {confirm: "削除しますか？"} do %>
-            このイベントを削除する
-          <% end %>
+      <h5 class="text-center">利用クーポン</h5>
+      <div class="relation_coupon pb-2">
+        <div class="min_setting_count">
+          <p><strong><%=event.coupon.min_setting_count %></strong>人以上のご来店でご利用可能</p>
         </div>
+        <h3 class="font-weight-bold"><%=event.coupon.content %></h3>
 
-      <% end %>
-
-      <h3 class="m-3">参加イベント(メンバー)</h3>
-      <% @user.participate_events.each do |event| %>
-
-        <div class="card mb-4" style="min-width: 200px;">
-          <div class="card-body">
-            <h5 class="card-title"><small class="text-muted">ホスト</small><%=event.host.name %></h5>
-            <p><%=event.setting_count %><small class="text-muted">人募集</small></p>
-            <p class="card-text"><%=event.content %></p>
-            <p class="card-title"><small class="text-muted">開催日</small> <%=event.event_date %></p>
-            <%=link_to 'イベント詳細', event_path(event.id)%>
-          </div>
-          <div class="card-footer pt-0">
-            <p><%=event.coupon.restaurant.name %></p>
-            <p><%=event.coupon.min_setting_count %><small class="text-muted">人以上の来店で</small></p>
-            <p><%=event.coupon.content %></p>
+        <div class="restaurant">
+          <h5 class="restaurant_name m-0"><%=event.coupon.restaurant.name %></h5>
+          <div class="locate">
+            <%=event.coupon.restaurant.address %>
           </div>
         </div>
+      </div>
 
-      <% end %>
+    </div>
 
-      <h3 class="m-3">チェッククーポン</h3>
-      <%= render partial: 'coupons/coupon', collection: @user.checkd_coupons %>
+	</div>
+</div>
+<% end %>
+
+<% end %>
+
+<h3 class="m-3 mt-5 text-center">参加イベント</h3>
+  <% @user.participate_events.each do |event| %>
+
+    <%= link_to event_path(event.id) do %>
+
+  <div class="event_container">
+    <div class="event_card">
+
+      <div class="event_date_area">
+        <div>
+          <p class="mt-2 mb-1 p-0">開催日</p>
+          <h4 class="mb-0"><%= event.event_date.strftime('%m') %><small>月</small></h4>
+          <h4><%= event.event_date.strftime('%d') %><small>日</small></h4>
+        </div>
+        <div class="deadline_date">
+          <p class="m-0 p-0">募集締切</p>
+          <h5><%= event.deadline_date.strftime('%m/%d') %></h5>
+        </div>
+      </div>
+      <div class="seeting_count">
+        <p class="m-0 mt-2">募集人数</p>
+        <h5><%= event.setting_count %></h5>
+      </div>
+      <div class="content">
+        <div class="host mt-3">
+          <p class="font-weight-bold mr-1 mb-0 host_tag">ホスト</p>
+          <h5 class="mb-0"><%= event.host.name %></h5>
+        </div>
+        <div class="content_prace font-weight-bold">
+          <h3><%= event.content %></h3>
+          <h5><%= event.prace %></h5>
+        </div>
+
+        <h5>利用クーポン</h5>
+        <div class="relation_coupon pb-2">
+          <div class="min_setting_count">
+            <p><strong><%=event.coupon.min_setting_count %></strong>人以上のご来店でご利用可能</p>
+          </div>
+          <h3 class="font-weight-bold"><%=event.coupon.content %></h3>
+
+          <div class="restaurant">
+            <h5 class="restaurant_name m-0"><%=event.coupon.restaurant.name %></h5>
+            <div class="locate">
+              <%=event.coupon.restaurant.address %>
+            </div>
+          </div>
+        </div>
+
+      </div>
 
     </div>
   </div>
-</div>
+
+<% end %>
+
+
+  <% end %>
+  <h3 class="m-3 mt-5 text-center">チェッククーポン</h3>
+  <%= render partial: 'coupons/coupon', collection: @user.checkd_coupons %>

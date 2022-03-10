@@ -1,4 +1,6 @@
-<div class="card text-center">
+<%
+=begin%>
+ <div class="card text-center">
   <div class="card-header pt-1 bg-success text-white">
   <p class="card-text">
     <small class="text-white">更新日：<%= event.updated_at.strftime("%Y-%m-%d") %></small>
@@ -30,4 +32,80 @@
   <p class="mb-2 mt-3 text-center">使用するクーポン</p>
     <%= render 'coupons/detail', coupon: event.coupon %>
 
+</div> 
+<%
+=end%>
+
+<%
+=begin%>
+ <div class="card mb-4" style="min-width: 200px;">
+  <div class="card-body">
+    <h5 class="card-title"><small class="text-muted">ホスト</small><%= event.host.name %></h5>
+    <p><%= event.setting_count %><small class="text-muted">人募集</small></p>
+    <p class="card-text"><%= event.content %></p>
+    <p class="card-title"><small class="text-muted">開催日</small> <%= event.event_date %></p>
+    <%= link_to 'イベント詳細', event_path(event.id)%>
+  </div>
+  <div class="card-footer pt-0">
+    <%= render 'coupons/coupon', coupon: event.coupon %>
+  </div>
+  <div class="card-footer bg-success">
+    <h5 class="text-white">現在のメンバー</h5>
+    <% if event.participate_users.empty? %>
+      <p class="text-white">参加メンバーはいません。</p>
+    <% else %>
+      <% event.participate_users.each do |user| %>
+        <p class="text-white"><%= user.name %></p>
+      <% end %>
+    <% end %>
+  </div>
 </div>
+<%
+=end%>
+<div class="event_container">
+	<div class="event_card mt-5">
+
+		<div class="event_date_area">
+      <div>
+        <p class="mt-2 mb-1 p-0">開催日</p>
+        <h4 class="mb-0"><%= event.event_date.strftime('%m') %><small>月</small></h4>
+        <h4><%= event.event_date.strftime('%d') %><small>日</small></h4>
+      </div>
+      <div class="deadline_date">
+        <p class="m-0 p-0">募集締切</p>
+        <h5><%= event.deadline_date.strftime('%m/%d') %></h5>
+      </div>
+		</div>
+    <div class="seeting_count">
+      <p class="m-0 mt-2">募集人数</p>
+      <h5><%= event.setting_count %></h5>
+    </div>
+    <div class="content">
+      <div class="host mt-3">
+        <p class="font-weight-bold mr-1 mb-0 host_tag">ホスト</p>
+        <h5 class="mb-0"><%= event.host.name %></h5>
+      </div>
+      <div class="content_prace font-weight-bold">
+        <h3><%= event.content %></h3>
+        <h5><%= event.prace %></h5>
+      </div>
+
+      <h5>利用クーポン</h5>
+      <div class="relation_coupon pb-2">
+        <div class="min_setting_count">
+          <p><strong><%=event.coupon.min_setting_count %></strong>人以上のご来店でご利用可能</p>
+        </div>
+        <h3 class="font-weight-bold"><%=event.coupon.content %></h3>
+
+        <div class="restaurant">
+          <h5 class="restaurant_name m-0"><%=event.coupon.restaurant.name %></h5>
+          <div class="locate">
+            <%=event.coupon.restaurant.address %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+	</div>
+</div>
+
